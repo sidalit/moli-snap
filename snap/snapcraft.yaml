@@ -1,0 +1,84 @@
+name: moli
+base: core26
+version: '1.1.17'
+title: Moli
+summary: Lightweight headless browser for AI agents and automation
+description: |
+  Moli is a fast, lightweight headless browser written in Rust. It loads and
+  runs web pages, then returns them as HTML, Markdown, JSON, screenshots or
+  PDF. It also serves the Chrome DevTools Protocol and WebDriver, so tools
+  such as Playwright, Puppeteer and Selenium can drive it.
+
+  **Examples**
+
+     moli fetch https://example.com --dump markdown
+     moli fetch https://example.com --layout --dump screenshot > page.png
+     moli serve --port 9222
+
+  **File access**
+
+  Moli can use profiles, cookie files and output paths in your home
+  directory. To also use USB drives and other removable media (/media,
+  /mnt), run:
+
+     sudo snap connect moli:removable-media
+license: Apache-2.0 OR MIT
+grade: stable
+confinement: strict
+website: https://github.com/lexmount/moli
+source-code: https://github.com/lexmount/moli
+issues: https://github.com/lexmount/moli/issues
+contact: https://github.com/sidalit/moli-snap/issues
+
+platforms:
+  amd64:
+  arm64:
+
+apps:
+  moli:
+    command: bin/moli
+    plugs:
+      - home
+      - removable-media
+      - network
+      - network-bind
+    environment:
+      # Fonts for layout, screenshots and PDF come from the snap.
+      FONTCONFIG_FILE: $SNAP/etc/fonts/fonts.conf
+
+layout:
+  /usr/share/fonts:
+    bind: $SNAP/usr/share/fonts
+  /usr/share/fontconfig:
+    bind: $SNAP/usr/share/fontconfig
+
+parts:
+  moli:
+    plugin: rust
+    source: https://github.com/lexmount/moli.git
+    source-tag: 'v1.1.17'
+    rust-channel: '1.96.1'
+    rust-path:
+      - moli
+    build-packages:
+      - build-essential
+      - binutils
+      - cmake
+      - libclang-dev
+      - python3
+      - pkg-config
+      - libfontconfig-dev
+    override-build: |
+      craftctl default
+      install -Dm644 LICENSE-APACHE "$CRAFT_PART_INSTALL/share/doc/moli/LICENSE-APACHE"
+      install -Dm644 LICENSE-MIT "$CRAFT_PART_INSTALL/share/doc/moli/LICENSE-MIT"
+
+  # Fonts for layout, screenshots and PDF: Latin, Greek and Cyrillic (DejaVu),
+  # metric-compatible Arial, Times and Courier (Liberation), and CJK (Droid).
+  fonts:
+    plugin: nil
+    stage-packages:
+      - libfontconfig1
+      - fonts-dejavu-core
+      - fonts-liberation
+      - fonts-droid-fallback
