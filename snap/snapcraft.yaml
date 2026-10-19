@@ -57,7 +57,7 @@ parts:
     plugin: rust
     source: https://github.com/lexmount/moli.git
     # renovate: depName=lexmount/moli
-    source-tag: 'v1.1.17'
+    source-tag: 'v1.1.18'
     rust-channel: '1.96.1'
     rust-path:
       - moli
