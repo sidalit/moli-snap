@@ -52,7 +52,7 @@ Screenshots and PDF use the fonts included in the snap: DejaVu (Latin, Greek, Cy
 
 ## Update to a new upstream release
 
-Change `source-tag` in `snap/snapcraft.yaml`, then rebuild.
+Change `version` in `snap/snapcraft.yaml`, then rebuild.
 
 ## Automation
 

@@ -1,6 +1,6 @@
 name: moli
 base: core26
-adopt-info: moli
+version: '1.1.18'
 title: Moli
 summary: Lightweight headless browser for AI agents and automation
 description: |
@@ -56,8 +56,7 @@ parts:
   moli:
     plugin: rust
     source: https://github.com/lexmount/moli.git
-    # renovate: depName=lexmount/moli
-    source-tag: 'v1.1.18'
+    source-tag: v$SNAPCRAFT_PROJECT_VERSION
     rust-channel: '1.96.1'
     rust-path:
       - moli
@@ -69,9 +68,6 @@ parts:
       - python3
       - pkg-config
       - libfontconfig-dev
-    override-pull: |
-      craftctl default
-      craftctl set version="$(git -C "$CRAFT_PART_SRC" describe --tags --match 'v[0-9]*' | sed 's/^v//')"
     override-build: |
       craftctl default
       install -Dm644 LICENSE-APACHE "$CRAFT_PART_INSTALL/share/doc/moli/LICENSE-APACHE"
