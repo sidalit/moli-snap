@@ -1,6 +1,6 @@
 name: moli
 base: core26
-version: '1.1.18'
+version: '1.1.19'
 title: Moli
 summary: Lightweight headless browser for AI agents and automation
 description: |
