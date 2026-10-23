@@ -26,8 +26,12 @@ license: Apache-2.0 OR MIT
 grade: stable
 confinement: strict
 website: https://github.com/lexmount/moli
-source-code: https://github.com/lexmount/moli
-issues: https://github.com/lexmount/moli/issues
+source-code:
+  - https://github.com/lexmount/moli
+  - https://github.com/sidalit/moli-snap
+issues:
+  - https://github.com/lexmount/moli/issues
+  - https://github.com/sidalit/moli-snap/issues
 contact: https://github.com/sidalit/moli-snap/issues
 
 platforms:
