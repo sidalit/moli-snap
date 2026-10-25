@@ -2,6 +2,7 @@ name: moli
 base: core26
 version: '1.1.19'
 title: Moli
+icon: snap/gui/moli.png
 summary: Lightweight headless browser for AI agents and automation
 description: |
   Moli is a fast, lightweight headless browser written in Rust. It loads and
