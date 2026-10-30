@@ -1,6 +1,6 @@
 name: moli
 base: core26
-version: '1.1.19'
+version: '1.1.20'
 title: Moli
 icon: snap/gui/moli.png
 summary: Lightweight headless browser for AI agents and automation
