@@ -65,7 +65,7 @@ parts:
     plugin: rust
     source: https://github.com/lexmount/moli.git
     source-tag: v$SNAPCRAFT_PROJECT_VERSION
-    rust-channel: '1.96.1'
+    rust-channel: stable
     rust-path:
       - moli
     build-packages:
